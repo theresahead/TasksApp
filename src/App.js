@@ -20,21 +20,21 @@ function App() {
   const [editing, setEditing] = useState(false);
   const [currentTask, setCurrentTask] = useState(initialFormState);
 
-  function editRow(task){
+  function editRow(taskItem){
     setEditing(true);
-    setCurrentTask({id: task.id, task: task.task, priority: task.priority});
+    setCurrentTask({id: taskItem.id, task: taskItem.task, priority: taskItem.priority});
   }
 
-  const addTask = task => {
-    task.id = tasks.length + 1;
-    setTasks([...tasks, task]);
+  const addTask = taskItem => {
+    taskItem.id = tasks.length + 1;
+    setTasks([...tasks, taskItem]);
   };
   const deleteTask = id => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter(taskItem => taskItem.id !== id));
   }
   const updateTask = ({id, updatedTask}) => {
     setEditing(false);
-    setTasks(tasks.map(task => (task.id === id ? updatedTask : task)))
+    setTasks(tasks.map(taskItem => (taskItem.id === id ? updatedTask : taskItem)))
   }
   return (
     <>
