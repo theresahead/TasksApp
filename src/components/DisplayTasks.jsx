@@ -2,7 +2,7 @@ import React from 'react'
 import Task from './Task'
 // import PropTypes from 'prop-types'
 
-function DisplayTasks({tasks, deleteTask, editRow, editing}) {
+function DisplayTasks({tasks, deleteTask, editRow, editing, currentTask, updateTask}) {
     return (
         <section className="container display-tasks">
             <div className="row">
@@ -17,6 +17,8 @@ function DisplayTasks({tasks, deleteTask, editRow, editing}) {
               deleteTask={deleteTask} 
               editRow={editRow}
               editing={editing}
+              currentTask={currentTask}
+              updateTask={updateTask}
               >
             </Task>
           )

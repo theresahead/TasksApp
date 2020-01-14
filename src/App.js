@@ -32,6 +32,10 @@ function App() {
   const deleteTask = id => {
     setTasks(tasks.filter(task => task.id !== id));
   }
+  const updateTask = ({id, updatedTask}) => {
+    setEditing(false);
+    setTasks(tasks.map(task => (task.id === id ? updatedTask : task)))
+  }
   return (
     <>
       <Header></Header>
@@ -40,6 +44,8 @@ function App() {
         deleteTask={deleteTask} 
         editRow={editRow}
         editing={editing}
+        currentTask={currentTask}
+        updateTask={updateTask}
         >
       </DisplayTasks>
       <AddTask onButtonClick={() => setModalIsOpen(true)}></AddTask>
