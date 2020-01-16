@@ -6,26 +6,22 @@ import React, {useState} from 'react'
 
 
 function NewTaskForm({addTask, setModalIsOpen}) {
-    const initialState = {id: null, task: "", priority: ""};
-    const [task, setTask] = useState(initialState);
+    const initialFormState = {id: null, task: "", priority: ""};
+    // taskItem is the current task item
+    const [taskItem, setTask] = useState(initialFormState);
     // const [isModalOpen, setModalIsOpen] = useState(true);
 
+    // Possibily change taskItem to tasks here as it.ll be adding the new task object to the tasks array
     const handleInputChange = e => {
-        console.log(e);
-        const {name, value} = e.target;
-        setTask({...task, [name]: value})
+        const { name, value } = e.target;
+        setTask({...taskItem, [name]: value})
     }
-    // const submitHandler = e => {
-    //     e.preventDefault();
-    //     if(!tasks.task || !tasks.priority) return;
-    //     addTask(tasks);
-    //     setTasks(initialState);
-    // }
     return (
-        <form className="container" onSubmit={e => {
+        <form className="container" onSubmit={ e => {
             e.preventDefault();
-            addTask(task);
-            setTask(initialState);
+            if(!taskItem.task || !taskItem.priority) return;
+            addTask(taskItem);
+            setTask(initialFormState);
             setModalIsOpen(false);
         }}>
             <div className="row">
@@ -33,10 +29,9 @@ function NewTaskForm({addTask, setModalIsOpen}) {
                     <div className="form-group">
                         <label htmlFor="task">Task</label>
                         <input 
+                            value={taskItem.task} 
                             onChange={handleInputChange}
-                            value={task.task} 
                             name="task" 
-                            id="task" 
                             className="form-control" 
                             type="text"/>
                     </div>
@@ -45,11 +40,11 @@ function NewTaskForm({addTask, setModalIsOpen}) {
                     <div className="form-group">
                         <label htmlFor="priority">Priority</label>
                         <select 
-                            value={task.priority}
+                            value={taskItem.priority}
                             onChange={handleInputChange}
                             className="form-control" 
-                            id="priority" 
                             name="priority">
+                            <option>Add Priority</option>
                             <option value="high">High</option>
                             <option value="medium">Medium</option>
                             <option value="low">Low</option>

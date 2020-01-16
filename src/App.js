@@ -4,38 +4,41 @@ import Header from './components/Header';
 import AddTask from './components/AddTask';
 import Modal from './components/Modal';
 import './assets/sass/index.scss';
-// import './App.css';
-
 
 
 function App() {
+  const tasksData = [];
+  // Modal
   const [isModalOpen, setModalIsOpen] = useState(false);
-  const tasksData = [
-    {id: 1, task: "task 1", priority: "urgent"},
-    {id: 2, task: "task 2", priority: "medium"},
-    {id: 3, task: "task 3", priority: "low"},
-  ];
-  const initialFormState = {id: null, task: "", priority: ""};
+  // Tasks = tasksData, setTasks = sets new tasks to the array
   const [tasks, setTasks] = useState(tasksData);
+  // Editing state hook
   const [editing, setEditing] = useState(false);
+  // Initial edit form state
+  const initialFormState = {id: null, task: "", priority: ""};
+  // currentTask = task thats being edited
   const [currentTask, setCurrentTask] = useState(initialFormState);
-
-  function editRow(taskItem){
-    setEditing(true);
-    setCurrentTask({id: taskItem.id, task: taskItem.task, priority: taskItem.priority});
-  }
-
+  //  Add task object to array
   const addTask = taskItem => {
     taskItem.id = tasks.length + 1;
     setTasks([...tasks, taskItem]);
-  };
-  const deleteTask = id => {
-    setTasks(tasks.filter(taskItem => taskItem.id !== id));
   }
-  const updateTask = ({id, updatedTask}) => {
+  // Delete 
+   const deleteTask = id => {
+    setTasks(tasks.filter(task => task.id !== id))
+  }
+  // Edit 
+  function editRow(task){
+    setEditing(true);
+    setCurrentTask({id: task.id, task: task.task, priority: task.priority});
+  }
+  // Update
+  const updateTask = (id, updatedTask) => {
+    console.log(updatedTask)
     setEditing(false);
-    setTasks(tasks.map(taskItem => (taskItem.id === id ? updatedTask : taskItem)))
+    setTasks(tasks.map(task => (task.id === id ? updatedTask : task)))
   }
+
   return (
     <>
       <Header></Header>
@@ -44,6 +47,7 @@ function App() {
         deleteTask={deleteTask} 
         editRow={editRow}
         editing={editing}
+        setEditing={setEditing}
         currentTask={currentTask}
         updateTask={updateTask}
         >

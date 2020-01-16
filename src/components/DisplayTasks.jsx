@@ -1,35 +1,50 @@
-import React from 'react'
-import Task from './Task'
+import React from "react";
+import Task from "./Task";
 // import PropTypes from 'prop-types'
 
-function DisplayTasks({tasks, deleteTask, editRow, editing, currentTask, updateTask}) {
-    return (
-        <section className="container display-tasks">
-            <div className="row">
-                <div className="col-5"><h2>Task</h2></div>
-                <div className="col-5"><h2>Priority</h2></div>
-            </div>
-            {tasks.map((task, index) => {
+function DisplayTasks({
+  tasks,
+  deleteTask,
+  editRow,
+  editing,
+  setEditing,
+  currentTask,
+  updateTask
+}) {
+  return (
+    <section className="container display-tasks">
+      <div className="row">
+        <div className="col-5">
+          <h2>Task</h2>
+        </div>
+        <div className="col-5">
+          <h2>Priority</h2>
+        </div>
+      </div>
+      {tasks.length > 0 ? (
+        tasks.map((taskItem, index) => {
           return (
-            <Task 
-              task={task} 
-              key={index} 
-              deleteTask={deleteTask} 
+            <Task
+              taskItem={taskItem}
+              deleteTask={deleteTask}
+              index={index}
               editRow={editRow}
               editing={editing}
+              setEditing={setEditing}
               currentTask={currentTask}
               updateTask={updateTask}
-              >
-            </Task>
-          )
-        })}
-        </section>
-    );
+            ></Task>
+          );
+        })
+      ) : (
+        <h2 className="text-center">There are no current tasks</h2>
+      )}
+    </section>
+  );
 }
 
 // DisplayTasks.propTypes = {
 
 // }
 
-export default DisplayTasks
-
+export default DisplayTasks;
