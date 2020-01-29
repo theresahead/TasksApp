@@ -24,7 +24,6 @@ function App() {
     priorityIndex(taskItem);
     taskItem.id = tasks.length + 1;
     setTasks([...tasks, taskItem]);
-    console.log(taskItem.priorityIndex);
   }
   // Delete 
    const deleteTask = id => {
@@ -36,7 +35,6 @@ function App() {
     setModalIsOpen(true)
     priorityIndex(task);
     setCurrentTask({id: task.id, task: task.task, priority: task.priority, priorityIndex: task.priorityIndex});
-    // console.log(task.priorityIndex)
   }
   // Update
   const updateTask = (id, updatedTask) => {
@@ -59,7 +57,6 @@ function App() {
         taskItem.priorityIndex = 3;
     }
   }
-
   // When new task is created check priority value through switch function
   // push priorityIndex and value to object depending on priority
 

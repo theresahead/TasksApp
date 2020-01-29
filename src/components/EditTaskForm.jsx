@@ -54,7 +54,7 @@ function EditTaskForm({setEditing, setModalIsOpen, currentTask, updateTask, prio
             </div>
             <div className="row">
                 <div className="col">
-                    <button type="submit" className="btn btn-success">Save</button>
+                    <button type="submit" className="btn btn-success mr-3">Save</button>
                     <button onClick={() => cancelEdit} className="btn btn-primary">Cancel</button>
                 </div>
             </div>

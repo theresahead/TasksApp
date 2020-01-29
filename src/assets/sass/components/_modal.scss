@@ -8,6 +8,9 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-    // max-width: 35rem;
-    // position: absolute;
+    form {
+        background-color: $white;
+        padding: 2rem;
+        border-radius: .5rem;
+    }
 }

@@ -54,8 +54,8 @@ function NewTaskForm({addTask, setModalIsOpen}) {
             </div>
             <div className="row">
                 <div className="col">
-                    <button className="btn btn-primary">Add Task</button>
-                    <button onClick={() => setModalIsOpen(false)} className="btn btn-warn">Cancel</button>
+                    <button className="btn btn-primary mr-3">Add Task</button>
+                    <button onClick={() => setModalIsOpen(false)} className="btn btn-danger">Cancel</button>
                 </div>
             </div>
         </form>
