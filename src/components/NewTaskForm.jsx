@@ -1,7 +1,4 @@
 import React, {useState} from 'react'
-// import Task from './Task'
-// import PropTypes from 'prop-types'
-// import AddTask from './AddTask'
 
 
 
@@ -9,7 +6,6 @@ function NewTaskForm({addTask, setModalIsOpen}) {
     const initialFormState = {id: null, task: "", priority: "", priorityIndex: null};
     // taskItem is the current task item
     const [taskItem, setTask] = useState(initialFormState);
-    // const [isModalOpen, setModalIsOpen] = useState(true);
 
     const handleInputChange = e => {
         const { name, value } = e.target;
@@ -62,9 +58,6 @@ function NewTaskForm({addTask, setModalIsOpen}) {
     )
 }
 
-// NewTaskForm.propTypes = {
-
-// }
 
 export default NewTaskForm
 

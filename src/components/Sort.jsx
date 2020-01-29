@@ -1,18 +1,14 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
-function Sort({toggleSort}) {
+function Sort({toggleSorting, sortByHighPriority}) {
 
     return (
-        <button className="btn btn-info" onClick={toggleSort}>
+        <button className="btn btn-info" onClick={toggleSorting}>
             Sort
         </button>
     )
 }
 
-// Sort.propTypes = {
-
-// }
 
 export default Sort
 

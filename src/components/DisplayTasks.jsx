@@ -12,6 +12,7 @@ function DisplayTasks({
   setEditing,
   currentTask,
   updateTask,
+  toggleSorting,
   priorityIndex
 }) {
   // const [sorted, setSort] = useState(tasks);
@@ -63,6 +64,9 @@ function DisplayTasks({
         </div>
         <div className="col-5">
           <h2>Priority</h2>
+        </div>
+        <div className="col-2">
+          <Sort toggleSorting={toggleSorting}></Sort>
         </div>
       </div>
       {tasks.length > 0 ? (

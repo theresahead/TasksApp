@@ -19,6 +19,8 @@ function App() {
   const initialFormState = {id: null, task: "", priority: "", priorityIndex: null};
   // currentTask = task thats being edited
   const [currentTask, setCurrentTask] = useState(initialFormState);
+  // Toggle sort of sort button
+  const [sort, toggleSort] = useState(false);
   //  Add task object to array
   const addTask = taskItem => {
     priorityIndex(taskItem);
@@ -57,6 +59,35 @@ function App() {
         taskItem.priorityIndex = 3;
     }
   }
+  const toggleSorting = () => {
+    toggleSort(!sort);
+    if(sort){
+      sortByHighPriority();
+    } else {
+      sortByLowPriority();
+    }
+  }
+
+  
+  const sortByHighPriority = () => {
+    console.log(tasks)
+    const sortedHigh = tasks.sort((a, b) => {
+      return a.priorityIndex - b.priorityIndex;
+    });
+    setTasks(sortedHigh);
+    // console.log(setTasks);
+  }
+  const sortByLowPriority = () => {
+    const sortedLow = tasks.sort((a, b) => {
+      return b.priorityIndex - a.priorityIndex;
+    });
+    setTasks(sortedLow);
+    // console.log(setTasks);
+  }
+  const sortReset = () => {
+    setTasks(tasksData);
+  }
+  // console.log(tasks);
   // When new task is created check priority value through switch function
   // push priorityIndex and value to object depending on priority
 
@@ -73,6 +104,7 @@ function App() {
         currentTask={currentTask}
         updateTask={updateTask}
         priorityIndex={priorityIndex}
+        toggleSorting={toggleSorting}
         >
       </DisplayTasks>
       <AddTask onButtonClick={() => setModalIsOpen(true)}></AddTask>
