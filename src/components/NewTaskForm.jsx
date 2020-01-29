@@ -11,7 +11,6 @@ function NewTaskForm({addTask, setModalIsOpen}) {
     const [taskItem, setTask] = useState(initialFormState);
     // const [isModalOpen, setModalIsOpen] = useState(true);
 
-    // Possibily change taskItem to tasks here as it.ll be adding the new task object to the tasks array
     const handleInputChange = e => {
         const { name, value } = e.target;
         setTask({...taskItem, [name]: value})
@@ -56,6 +55,7 @@ function NewTaskForm({addTask, setModalIsOpen}) {
             <div className="row">
                 <div className="col">
                     <button className="btn btn-primary">Add Task</button>
+                    <button onClick={() => setModalIsOpen(false)} className="btn btn-warn">Cancel</button>
                 </div>
             </div>
         </form>

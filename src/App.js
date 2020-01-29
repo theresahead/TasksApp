@@ -36,11 +36,12 @@ function App() {
     setModalIsOpen(true)
     priorityIndex(task);
     setCurrentTask({id: task.id, task: task.task, priority: task.priority, priorityIndex: task.priorityIndex});
-    console.log(task.priorityIndex)
+    // console.log(task.priorityIndex)
   }
   // Update
   const updateTask = (id, updatedTask) => {
     setEditing(false);
+    setModalIsOpen(false);
     setTasks(tasks.map(task => (task.id === id ? updatedTask : task)))
   }
 
@@ -79,7 +80,7 @@ function App() {
       </DisplayTasks>
       <AddTask onButtonClick={() => setModalIsOpen(true)}></AddTask>
       {isModalOpen && (
-        <Modal addTask={addTask} setModalIsOpen={setModalIsOpen} editing={editing}></Modal>
+        <Modal addTask={addTask} setModalIsOpen={setModalIsOpen} editing={editing} setEditing={setEditing} currentTask={currentTask} updateTask={updateTask} priorityIndex={priorityIndex}></Modal>
       )} 
     </>
   )

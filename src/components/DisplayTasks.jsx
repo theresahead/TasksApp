@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Task from "./Task";
-import EditForm from "./EditForm";
+// import EditForm from "./EditTaskForm";
 import Sort from "./Sort";
 // import PropTypes from 'prop-types'
 
@@ -14,11 +14,11 @@ function DisplayTasks({
   updateTask,
   priorityIndex
 }) {
-  const [sorted, setSort] = useState(tasks);
-  const toggleSort = () => {
-    setSort(!sorted);
-    console.log(sorted);
-  };
+  // const [sorted, setSort] = useState(tasks);
+  // const toggleSort = () => {
+  //   setSort(!sorted);
+  //   console.log(sorted);
+  // };
 
   // if (sorted === true){
   //   tasks.sort((taska, taskb) => {
@@ -34,26 +34,27 @@ function DisplayTasks({
   //   return a.priorityIndex - b.priorityIndex;
   // });
 
-  const sortedHigh = (tasks) => [...tasks].sort((a, b) => {
-    return a.priorityIndex > b.priorityIndex
-  });
+  // const sortedHigh = (tasks) => [...tasks].sort((a, b) => {
+  //   return a.priorityIndex > b.priorityIndex
+  // });
 
-  const sortedLow = (tasks) => [...tasks].sort((a, b) => {
-    return a.priorityIndex < b.priorityIndex
-  });
+  // const sortedLow = (tasks) => [...tasks].sort((a, b) => {
+  //   return a.priorityIndex < b.priorityIndex
+  // });
   
-  const whichSort = sorted => {
-    if (sorted === true) {
-      sortedHigh(tasks);
-      // [...tasksData]
-    } else {
-      sortedLow(tasks);
-      // console.log(tasks);
-    }
-  };
+  // const whichSort = sorted => {
+  //   if (sorted === true) {
+  //     sortedHigh(tasks);
+  //     // [...tasksData]
+  //   } else {
+  //     sortedLow(tasks);
+  //     // console.log(tasks);
+  //   }
+  // };
 
   // whichSort(sorted);
   // console.log(tasks);
+
   return (
     <section className="container display-tasks">
       <div className="row">
@@ -65,9 +66,9 @@ function DisplayTasks({
         </div>
       </div>
       {tasks.length > 0 ? (
-        editing ? (
-            <EditForm setEditing={setEditing} currentTask={currentTask} updateTask={updateTask}></EditForm>
-        ) : (
+        // editing ? (
+        //     <EditForm setEditing={setEditing} currentTask={currentTask} updateTask={updateTask}></EditForm>
+        // ) : (
           tasks.map((taskItem, index) => {
             return (
               <Task
@@ -82,7 +83,7 @@ function DisplayTasks({
               ></Task>
             );
           })
-        )
+        // )
       ) : (
         <h2 className="text-center">There are no current tasks</h2>
       )}
