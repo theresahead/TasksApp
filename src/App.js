@@ -75,14 +75,12 @@ function App() {
       return a.priorityIndex - b.priorityIndex;
     });
     setTasks(sortedHigh);
-    // console.log(setTasks);
   }
   const sortByLowPriority = () => {
     const sortedLow = tasks.sort((a, b) => {
       return b.priorityIndex - a.priorityIndex;
     });
     setTasks(sortedLow);
-    // console.log(setTasks);
   }
   const sortReset = () => {
     setTasks(tasksData);
