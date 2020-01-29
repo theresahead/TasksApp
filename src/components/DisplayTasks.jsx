@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Task from "./Task";
-import EditForm from './EditForm';
+import EditForm from "./EditForm";
+import Sort from "./Sort";
 // import PropTypes from 'prop-types'
 
 function DisplayTasks({
@@ -10,8 +11,49 @@ function DisplayTasks({
   editing,
   setEditing,
   currentTask,
-  updateTask
+  updateTask,
+  priorityIndex
 }) {
+  const [sorted, setSort] = useState(tasks);
+  const toggleSort = () => {
+    setSort(!sorted);
+    console.log(sorted);
+  };
+
+  // if (sorted === true){
+  //   tasks.sort((taska, taskb) => {
+  //       return taska.priorityIndex - taskb.priorityIndex;
+  //   })
+  // } else {
+  //   tasks.sort((taska, taskb) => {
+  //     return taska.priorityIndex + taskb.priorityIndex;
+  // })
+  // }
+
+  // const sortArrayHighest = tasks.sort((a, b) {
+  //   return a.priorityIndex - b.priorityIndex;
+  // });
+
+  const sortedHigh = (tasks) => [...tasks].sort((a, b) => {
+    return a.priorityIndex > b.priorityIndex
+  });
+
+  const sortedLow = (tasks) => [...tasks].sort((a, b) => {
+    return a.priorityIndex < b.priorityIndex
+  });
+  
+  const whichSort = sorted => {
+    if (sorted === true) {
+      sortedHigh(tasks);
+      // [...tasksData]
+    } else {
+      sortedLow(tasks);
+      // console.log(tasks);
+    }
+  };
+
+  // whichSort(sorted);
+  // console.log(tasks);
   return (
     <section className="container display-tasks">
       <div className="row">

@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 
 
 function NewTaskForm({addTask, setModalIsOpen}) {
-    const initialFormState = {id: null, task: "", priority: ""};
+    const initialFormState = {id: null, task: "", priority: "", priorityIndex: null};
     // taskItem is the current task item
     const [taskItem, setTask] = useState(initialFormState);
     // const [isModalOpen, setModalIsOpen] = useState(true);
@@ -16,6 +16,7 @@ function NewTaskForm({addTask, setModalIsOpen}) {
         const { name, value } = e.target;
         setTask({...taskItem, [name]: value})
     }
+    
     return (
         <form className="container" onSubmit={ e => {
             e.preventDefault();

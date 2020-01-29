@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 // import PropTypes from 'prop-types'
 
 
-function EditForm({setEditing, currentTask, updateTask}) {
+function EditForm({setEditing, currentTask, updateTask, priorityIndex}) {
     // currentTask = task thats currently being edited
     const [task, setTask] = useState(currentTask);
 
@@ -13,8 +13,8 @@ function EditForm({setEditing, currentTask, updateTask}) {
     return (
         <form 
             onSubmit={ e => {
-                console.log(task.id)
                 e.preventDefault();
+                priorityIndex(task);
                 updateTask(task.id, task);
             }} 
             className="row">
