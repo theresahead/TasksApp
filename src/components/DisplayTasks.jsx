@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Task from "./Task";
-// import EditForm from "./EditTaskForm";
 import Sort from "./Sort";
 // import PropTypes from 'prop-types'
 
@@ -13,48 +12,7 @@ function DisplayTasks({
   currentTask,
   updateTask,
   toggleSorting,
-  priorityIndex
 }) {
-  // const [sorted, setSort] = useState(tasks);
-  // const toggleSort = () => {
-  //   setSort(!sorted);
-  //   console.log(sorted);
-  // };
-
-  // if (sorted === true){
-  //   tasks.sort((taska, taskb) => {
-  //       return taska.priorityIndex - taskb.priorityIndex;
-  //   })
-  // } else {
-  //   tasks.sort((taska, taskb) => {
-  //     return taska.priorityIndex + taskb.priorityIndex;
-  // })
-  // }
-
-  // const sortArrayHighest = tasks.sort((a, b) {
-  //   return a.priorityIndex - b.priorityIndex;
-  // });
-
-  // const sortedHigh = (tasks) => [...tasks].sort((a, b) => {
-  //   return a.priorityIndex > b.priorityIndex
-  // });
-
-  // const sortedLow = (tasks) => [...tasks].sort((a, b) => {
-  //   return a.priorityIndex < b.priorityIndex
-  // });
-  
-  // const whichSort = sorted => {
-  //   if (sorted === true) {
-  //     sortedHigh(tasks);
-  //     // [...tasksData]
-  //   } else {
-  //     sortedLow(tasks);
-  //     // console.log(tasks);
-  //   }
-  // };
-
-  // whichSort(sorted);
-  // console.log(tasks);
 
   return (
     <section className="container display-tasks">
@@ -69,7 +27,7 @@ function DisplayTasks({
           <Sort toggleSorting={toggleSorting}></Sort>
         </div>
       </div>
-      {tasks.length > 0 ? (
+      {tasks && (
         // editing ? (
         //     <EditForm setEditing={setEditing} currentTask={currentTask} updateTask={updateTask}></EditForm>
         // ) : (
@@ -88,9 +46,10 @@ function DisplayTasks({
             );
           })
         // )
-      ) : (
-        <h2 className="text-center">There are no current tasks</h2>
       )}
+       {/* : (
+        <h2 className="text-center">There are no current tasks</h2>
+      )} */}
     </section>
   );
 }
