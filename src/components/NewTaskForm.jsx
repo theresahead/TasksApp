@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 
-
-
 function NewTaskForm({addTask, setModalIsOpen}) {
     const initialFormState = {id: null, task: "", priority: "", priorityIndex: null};
     // taskItem is the current task item

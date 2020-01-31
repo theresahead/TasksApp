@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Sort({toggleSorting, sortByHighPriority}) {
+function Sort({toggleSorting}) {
 
     return (
         <button className="btn btn-info" onClick={toggleSorting}>

@@ -1,7 +1,6 @@
 import React from "react";
 import Task from "./Task";
 import Sort from "./Sort";
-// import PropTypes from 'prop-types'
 
 function DisplayTasks({
   tasks,
@@ -27,11 +26,7 @@ function DisplayTasks({
           <Sort toggleSorting={toggleSorting}></Sort>
         </div>
       </div>
-      {tasks && (
-        // editing ? (
-        //     <EditForm setEditing={setEditing} currentTask={currentTask} updateTask={updateTask}></EditForm>
-        // ) : (
-          tasks.map((taskItem, index) => {
+          {tasks.map((taskItem, index) => {
             return (
               <Task
                 taskItem={taskItem}
@@ -45,17 +40,10 @@ function DisplayTasks({
               ></Task>
             );
           })
-        // )
-      )}
-       {/* : (
-        <h2 className="text-center">There are no current tasks</h2>
-      )} */}
+        }
     </section>
   );
 }
 
-// DisplayTasks.propTypes = {
-
-// }
 
 export default DisplayTasks;

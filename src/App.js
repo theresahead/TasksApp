@@ -7,11 +7,10 @@ import './assets/sass/index.scss';
 
 
 function App() {
-  // Store data in 
   const initialData = () => JSON.parse(sessionStorage.getItem('tasks')) || [];
-  // Modal
-  // Tasks = tasksData, setTasks = sets new tasks to the array
+  // Tasks = tasks, setTasks = sets new tasks object to the array
   const [tasks, setTasks] = useState(initialData);
+  // Modal
   const [isModalOpen, setModalIsOpen] = useState(false);
   // Editing state hook
   const [editing, setEditing] = useState(false);
@@ -45,7 +44,6 @@ function App() {
     setTasks(tasks.map(task => (task.id === id ? updatedTask : task)))
   }
 
-  // Set task.priority to task.priorityIndex to allow sorting
   const priorityIndex = taskItem => {
     taskItem.priorityIndex = null;
     switch(taskItem.priority){
@@ -68,14 +66,13 @@ function App() {
     }
   }
 
-  
   const sortByHighPriority = () => {
-    console.log(tasks)
     const sortedHigh = tasks.sort((a, b) => {
       return a.priorityIndex - b.priorityIndex;
     });
     setTasks(sortedHigh);
   }
+
   const sortByLowPriority = () => {
     const sortedLow = tasks.sort((a, b) => {
       return b.priorityIndex - a.priorityIndex;
@@ -85,14 +82,8 @@ function App() {
 
   useEffect(() => {
     sessionStorage.setItem('tasks', JSON.stringify(tasks));
-  })
-  console.log(tasks);
-  // const sortReset = () => {
-  //   setTasks(tasksData);
-  // }
-  // console.log(tasks);
-  // When new task is created check priority value through switch function
-  // push priorityIndex and value to object depending on priority
+  },[tasks])
+  
 
   return (
     <>

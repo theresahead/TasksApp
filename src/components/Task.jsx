@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 function Task({
     taskItem, 
@@ -16,16 +15,11 @@ function Task({
             </div>
             <div className="col-2">
                 <button className="btn btn-danger" onClick={() => deleteTask(taskItem.id)}>Delete</button>
-                {/* {console.log(task)} */}
             </div>
         </div>
 
     )
 }
-
-// Task.propTypes = {
-
-// }
 
 export default Task
 

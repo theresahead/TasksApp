@@ -41,7 +41,6 @@ function EditTaskForm({setEditing, setModalIsOpen, currentTask, updateTask, prio
                             value={task.priority}
                             onChange={handleInputChange}
                             className="form-control" 
-                            // id="priority" 
                             name="priority">
                             <option>Select Priority</option>
                             <option value="high">High</option>
