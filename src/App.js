@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import DisplayTasks from './components/DisplayTasks';
 import Header from './components/Header';
 import AddTask from './components/AddTask';
@@ -8,11 +8,11 @@ import './assets/sass/index.scss';
 
 function App() {
   // Store data in 
-  const tasksData = [];
+  const initialData = () => JSON.parse(sessionStorage.getItem('tasks')) || [];
   // Modal
-  const [isModalOpen, setModalIsOpen] = useState(false);
   // Tasks = tasksData, setTasks = sets new tasks to the array
-  const [tasks, setTasks] = useState(tasksData);
+  const [tasks, setTasks] = useState(initialData);
+  const [isModalOpen, setModalIsOpen] = useState(false);
   // Editing state hook
   const [editing, setEditing] = useState(false);
   // Initial edit form state
@@ -82,9 +82,14 @@ function App() {
     });
     setTasks(sortedLow);
   }
-  const sortReset = () => {
-    setTasks(tasksData);
-  }
+
+  useEffect(() => {
+    sessionStorage.setItem('tasks', JSON.stringify(tasks));
+  })
+  console.log(tasks);
+  // const sortReset = () => {
+  //   setTasks(tasksData);
+  // }
   // console.log(tasks);
   // When new task is created check priority value through switch function
   // push priorityIndex and value to object depending on priority
@@ -92,7 +97,6 @@ function App() {
   return (
     <>
       <Header></Header>
-      {/* Filter tasks by importance */}
       <DisplayTasks 
         tasks={tasks} 
         deleteTask={deleteTask} 
